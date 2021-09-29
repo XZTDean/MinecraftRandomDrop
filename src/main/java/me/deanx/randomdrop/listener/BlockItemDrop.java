@@ -37,7 +37,7 @@ public class BlockItemDrop implements Listener {
                 Material material;
                 do {
                     material = materials[random.nextInt(materials.length)];
-                } while (!material.isItem() || unavailableItem.contains(material) || !isDeprecated(material));
+                } while (!material.isItem() || unavailableItem.contains(material) || isDeprecated(material));
                 dropMap.put(type, material);
                 unavailableItem.add(material);
             }
@@ -51,7 +51,7 @@ public class BlockItemDrop implements Listener {
         try {
             field = Material.class.getField(material.name());
         } catch (NoSuchFieldException e) {
-            Bukkit.getLogger().warning("Find unkown Material " + material.name());
+            Bukkit.getLogger().warning("Find unknown Material " + material.name());
             return true;
         }
         if (field.isAnnotationPresent(Deprecated.class)) {
