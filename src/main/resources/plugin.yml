@@ -1,0 +1,6 @@
+name: RandomDrop
+version: 0.1
+author: DeanX
+main: me.deanx.randomdrop.Plugin
+description: Random drop plugin
+api-version: 1.13
