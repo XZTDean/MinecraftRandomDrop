@@ -4,6 +4,7 @@ import me.deanx.randomdrop.Plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDropItemEvent;
@@ -16,12 +17,14 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockItemDrop implements Listener {
-    private final HashMap<Material, Material> dropMap = new HashMap<>();
-    private static final Material[] materials = Material.values();
     private final Random random = new Random();
     private final HashSet<Material> unavailableItem = new HashSet<>(List.of(
             Material.COMMAND_BLOCK, Material.COMMAND_BLOCK_MINECART, Material.CHAIN_COMMAND_BLOCK,
             Material.REPEATING_COMMAND_BLOCK, Material.STRUCTURE_BLOCK, Material.STRUCTURE_VOID, Material.AIR));
+
+
+    private static final Material[] materials = Material.values();
+    private final HashMap<Player, HashMap<Material, Material>> userDropMap = new HashMap<>();
 
     public BlockItemDrop(Plugin plugin) {
         Bukkit.getPluginManager().registerEvents(this, plugin);
@@ -29,6 +32,13 @@ public class BlockItemDrop implements Listener {
 
     @EventHandler
     public void onBlockItemDrop(BlockDropItemEvent event) {
+        Player player = event.getPlayer();
+
+        if (!userDropMap.containsKey(player))
+            userDropMap.put(player, new HashMap<>());
+
+        HashMap<Material, Material> dropMap = userDropMap.get(player);
+
         List<Item> itemList = event.getItems();
         for (Item item : itemList) {
             ItemStack itemStack = item.getItemStack();
