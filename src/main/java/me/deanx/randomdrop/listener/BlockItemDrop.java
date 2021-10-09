@@ -21,7 +21,7 @@ public class BlockItemDrop implements Listener {
     private final Random random = new Random();
     private final HashSet<Material> unavailableItem = new HashSet<>(List.of(
             Material.COMMAND_BLOCK, Material.COMMAND_BLOCK_MINECART, Material.CHAIN_COMMAND_BLOCK,
-            Material.REPEATING_COMMAND_BLOCK, Material.STRUCTURE_BLOCK, Material.STRUCTURE_VOID));
+            Material.REPEATING_COMMAND_BLOCK, Material.STRUCTURE_BLOCK, Material.STRUCTURE_VOID, Material.AIR));
 
     public BlockItemDrop(Plugin plugin) {
         Bukkit.getPluginManager().registerEvents(this, plugin);
