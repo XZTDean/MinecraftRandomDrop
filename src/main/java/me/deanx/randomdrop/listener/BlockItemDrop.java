@@ -21,7 +21,8 @@ public class BlockItemDrop implements Listener {
     private final Random random = new Random();
     private final HashSet<Material> unavailableItem = new HashSet<>(List.of(
             Material.COMMAND_BLOCK, Material.COMMAND_BLOCK_MINECART, Material.CHAIN_COMMAND_BLOCK,
-            Material.REPEATING_COMMAND_BLOCK, Material.STRUCTURE_BLOCK, Material.STRUCTURE_VOID, Material.AIR));
+            Material.REPEATING_COMMAND_BLOCK, Material.STRUCTURE_BLOCK, Material.STRUCTURE_VOID, Material.AIR,
+            Material.DEBUG_STICK, Material.STRUCTURE_BLOCK, Material.BARRIER));
 
 
     private static final Material[] materials = Material.values();
