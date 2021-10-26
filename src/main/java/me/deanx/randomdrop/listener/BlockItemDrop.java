@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDropItemEvent;
 import org.bukkit.inventory.ItemStack;
@@ -28,6 +29,10 @@ public class BlockItemDrop implements Listener {
 
     public BlockItemDrop(Plugin plugin) {
         Bukkit.getPluginManager().registerEvents(this, plugin);
+    }
+
+    public void unregister() {
+        HandlerList.unregisterAll(this);
     }
 
     @EventHandler
