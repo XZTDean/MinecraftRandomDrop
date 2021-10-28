@@ -13,7 +13,7 @@ public class RandomDropCommandCompleter implements TabCompleter {
     private final List<String> COMMANDS = List.of("reload");
 
     public RandomDropCommandCompleter(Plugin plugin) {
-        plugin.getCommand("ManHunt").setTabCompleter(this);
+        plugin.getCommand("RandomDrop").setTabCompleter(this);
     }
 
     @Override
